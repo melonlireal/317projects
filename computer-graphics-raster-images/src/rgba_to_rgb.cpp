@@ -9,9 +9,9 @@ void rgba_to_rgb(
   std::vector<unsigned char> & rgb)
 {
   rgb.resize(height*width*3);
-  for (int i = 0; i < width*height*4; i ++){
-    if(i%4!=3){
-      rgb.push_back(rgba[i]);
+  for (int i = 0; i < width*height; i ++){
+    for (int j = 0; j < 3; j ++) {
+      rgb[i*3 + j] = rgba[i*4 + j];
     }
   }
 }

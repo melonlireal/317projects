@@ -4,12 +4,11 @@
 #include <iostream>
 
 bool write_ppm(
-  const std::string & filename,
-  const std::vector<unsigned char> & data,
+  const std::string &filename,
+  const std::vector<unsigned char> &data,
   const int width,
   const int height,
-  const int num_channels)
-{
+  const int num_channels) {
   assert(
     (num_channels == 3 || num_channels ==1 ) &&
     ".ppm only supports RGB or grayscale images");
@@ -18,13 +17,13 @@ bool write_ppm(
   if (ppm.is_open()) {
     if (num_channels == 3) {
       ppm << "P3\n";
-    }else if (num_channels == 1) {
+    } else if (num_channels == 1) {
       ppm << "P2\n";
     }
-    ppm << width << ' ' << height << '\n';
+    ppm << width << " " << height << "\n";
     ppm << "255\n";
     for (int i = 0; i < width * height * num_channels; i++) {
-      ppm << int(data[i]) << ' ';
+      ppm << (int)data[i] << " ";
     }
     ppm.close();
     std::cout << "Writing PPM image to " << filename << std::endl;

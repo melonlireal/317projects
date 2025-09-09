@@ -14,14 +14,14 @@ void demosaic(
         if (i%2 == 0) { //green pixel
           rgb[i*3+0] = bayer[i*3+0];
         }else if (i%2 == 1) { //blue
-          bayer[i*width+j] = rgb[(i*width+j)*3+3];
+
         }
       }else if (j%2 == 1) {
         // RGRGRGRG row
         if (i%2 == 0) { // red
-          bayer[i*width+j] = rgb[(i*width+j)*3];
+
         }else if (i%2 == 0) { // green
-          bayer[i*width+j] = rgb[(i*width+j)*3 + 1];
+
         }
       }
     }
@@ -30,7 +30,7 @@ void demosaic(
 }
 
 bool help_exists(int num, int width, int height) {
-  if (0 < num < width * height) {
+  if (0 <= num && num <= width * height) {
     return true;
   }
   return false;
