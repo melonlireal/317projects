@@ -8,7 +8,11 @@ void rgb_to_gray(
 {
   gray.resize(height*width);
   ////////////////////////////////////////////////////////////////////////////
-  // Add your code here
+  for (int i = 0; i < width; i++) {
+    for (int j = 0; j < height; j++) {
+      gray[i*width + j] = 0.2129 * rgb[(i*width + j)*3 + 0] + 0.7152*rgb[(i*width + j)*3 + 1] + 0.0722*rgb[(i*width + j)*3 + 2];
+    }
+  }
   ////////////////////////////////////////////////////////////////////////////
 }
 
