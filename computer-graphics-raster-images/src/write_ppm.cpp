@@ -15,15 +15,16 @@ bool write_ppm(
     ".ppm only supports RGB or grayscale images");
   // reference: https://www.youtube.com/watch?v=HGHbcRscFsg&ab_channel=Ferrabacus
   std::ofstream ppm(filename);
-  std::ofstream out("a.txt");
-  out << "HI";
-  out.close();
   if (ppm.is_open()) {
-    ppm << "P3\n";
+    if (num_channels == 3) {
+      ppm << "P3\n";
+    }else if (num_channels == 1) {
+      ppm << "P2\n";
+    }
     ppm << width << ' ' << height << '\n';
     ppm << "255\n";
     for (int i = 0; i < width * height * num_channels; i++) {
-      ppm << static_cast<int>(data[i]) << ' ';
+      ppm << int(data[i]) << ' ';
     }
     ppm.close();
     std::cout << "Writing PPM image to " << filename << std::endl;

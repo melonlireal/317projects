@@ -1,5 +1,7 @@
 #include "rgba_to_rgb.h"
 
+#include <iostream>
+
 void rgba_to_rgb(
   const std::vector<unsigned char> & rgba,
   const int & width,
