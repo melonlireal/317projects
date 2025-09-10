@@ -16,12 +16,14 @@ void rgb_to_hsv(
   double m = std::min({r,g,b}); // minimum rgb color
   double C = M - m; // range
 
-  if (r>=g && r>=b) { // r is max
+  if (C==0) {
+    h = 0;
+  }else if (r==M) { // r is max
     h = ((g-b)/C + 0) * 60; // cuz you cant use % on double
-  }else if (g>=r && g>=b) { // g is max
-    h = ((b-r)/C + 2) * 60;
-  }else if (b>=r && b>=g) { // b is max
-    h = ((r-g)/C + 4) * 60;
+  }else if (g==M) { // g is max
+    h = (((b-r)/C) + 2) * 60;
+  }else if (b==M) { // b is max
+    h = (((r-g)/C) + 4) * 60;
   }
   if (M == 0) {
     s = 0;
