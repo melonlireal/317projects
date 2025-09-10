@@ -1,5 +1,9 @@
 #include "over.h"
 
+#include <iostream>
+
+#include "rgba_to_rgb.h"
+
 void over(
   const std::vector<unsigned char> & A,
   const std::vector<unsigned char> & B,
@@ -15,9 +19,9 @@ void over(
       C[i*4+2] = (unsigned char)0;
       C[i*4+3] = (unsigned char)0;
     }else if (B[i*4+3] != 0 && A[i*4+3] != 0 ) { // if both, use dest
-      C[i*4] = A[i*4];
-      C[i*4+1] = A[i*4+1];
-      C[i*4+2] = A[i*4+2];
+      C[i*4] = (A[i*4]*A[i*4+3] + (255 - A[i*4+3])*B[i*4])/255;
+      C[i*4+1] = (A[i*4+1]*A[i*4+3] + (255 - A[i*4+3])*B[i*4+1])/255;
+      C[i*4+2] = (A[i*4+2]*A[i*4+3] + (255 - A[i*4+3])*B[i*4+2])/255;
       C[i*4+3] = A[i*4+3];
     }else if (B[i*4+3] != 0 && A[i*4+3] == 0) { // if only source, use source
       C[i*4] = B[i*4];
