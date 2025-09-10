@@ -16,28 +16,28 @@ void demosaic(
 {
   rgb.resize(width*height*3);
   ////////////////////////////////////////////////////////////////////////////
-  for (int i = 0; i < height; i++) {
-    for (int j = 0; j < width; j++) {
-      if ((i%2 == 0 && j%2 == 0) || (i%2 == 1 && j%2 == 1)) { // this means green
-        if (j%2 == 0) { //GBGBGB
-          rgb[(i*height + j)*3] = bayer[i*width + j];
-          rgb[(i*height + j)*3 + 2] = bayer[i*width + j];
-        }else if (j%2 == 1) {//RBRBRB
-          rgb[(i*height + j)*3] = bayer[i*width + j];
-          rgb[(i*height + j)*3 + 2] = bayer[i*width + j];
-        }
-        rgb[(i*height + j)*3 + 1] = bayer[i*width + j]; //green
-      }else if (i % 2 == 0 && j%2 == 1) { //blue
-        rgb[(i*height + j)*3] = bayer[i*width + j];
-        rgb[(i*height + j)*3 + 1] = bayer[i*width + j];
-        rgb[(i*height + j)*3 + 2] = bayer[i*width + j]; //blue
-      }else if (i  %2 == 1 && j % 2 == 0) { // red
-        rgb[(i*height + j)*3] = bayer[i*width + j]; //red
-        rgb[(i*height + j)*3 + 1] = bayer[i*width + j];
-        rgb[(i*height + j)*3 + 2] = bayer[i*width + j];
-      }
-    }
-  }
+  // for (int i = 0; i < height; i++) {
+  //   for (int j = 0; j < width; j++) {
+  //     if ((i%2 == 0 && j%2 == 0) || (i%2 == 1 && j%2 == 1)) { // this means green
+  //       if (j%2 == 0) { //GBGBGB
+  //         rgb[(i*height + j)*3] = bayer[i*width + j];
+  //         rgb[(i*height + j)*3 + 2] = bayer[i*width + j];
+  //       }else if (j%2 == 1) {//RBRBRB
+  //         rgb[(i*height + j)*3] = bayer[i*width + j];
+  //         rgb[(i*height + j)*3 + 2] = bayer[i*width + j];
+  //       }
+  //       rgb[(i*height + j)*3 + 1] = bayer[i*width + j]; //green
+  //     }else if (i % 2 == 0 && j%2 == 1) { //blue
+  //       rgb[(i*height + j)*3] = bayer[i*width + j];
+  //       rgb[(i*height + j)*3 + 1] = bayer[i*width + j];
+  //       rgb[(i*height + j)*3 + 2] = bayer[i*width + j]; //blue
+  //     }else if (i  %2 == 1 && j % 2 == 0) { // red
+  //       rgb[(i*height + j)*3] = bayer[i*width + j]; //red
+  //       rgb[(i*height + j)*3 + 1] = bayer[i*width + j];
+  //       rgb[(i*height + j)*3 + 2] = bayer[i*width + j];
+  //     }
+  //   }
+  // }
   ////////////////////////////////////////////////////////////////////////////
 }
 

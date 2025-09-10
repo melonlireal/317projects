@@ -1,5 +1,7 @@
 #include "hsv_to_rgb.h"
 
+#include <cmath>
+
 void hsv_to_rgb(
   const double h,
   const double s,
@@ -10,35 +12,35 @@ void hsv_to_rgb(
 {
   ////////////////////////////////////////////////////////////////////////////
   // Replace with your code here:
-  r = 0;
-  g = 0;
-  b = 0;
   double c = v * s;
   double m = v - c;
-  if (h<60) {
+  double H_alt = remainder(h,360)/60;
+  double X =c*(1-std::abs((remainder(H_alt,2))-1));
+
+  if (remainder(h,360)<60) {
     r = c + m;
-    g = 0;
+    g = X+m;
     b = m;
-  }else if (h < 120) {
-    r = 0;
+  }else if (remainder(h,360) < 120) {
+    r = X+m;
     g = c + m;
     b = m;
-  }else if (h < 180) {
+  }else if (remainder(h,360) < 180) {
     r = m;
     g = c + m;
-    b = 0;
-  }else if (h < 240) {
+    b = X+m;
+  }else if (remainder(h,360) < 240) {
     r = m;
-    g = 0;
+    g = X+m;
     b = c + m;
-  }else if (h < 300) {
-    r = 0;
+  }else if (remainder(h,360) < 300) {
+    r = X+m;
     g = m;
     b = c + m;
-  }else if (h < 360) {
+  }else if (remainder(h,360) < 360) {
     r = c + m;
     g = m;
-    b = 0;
+    b = X + m;
   }
   ////////////////////////////////////////////////////////////////////////////
 }
