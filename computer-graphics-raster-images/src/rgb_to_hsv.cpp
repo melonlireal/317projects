@@ -1,6 +1,7 @@
 #include "rgb_to_hsv.h"
 
 #include <algorithm>
+#include <cmath>
 
 void rgb_to_hsv(
   const double r,
@@ -19,7 +20,7 @@ void rgb_to_hsv(
   if (C==0) {
     h = 0;
   }else if (r==M) { // r is max
-    h = ((g-b)/C + 0) * 60; // cuz you cant use % on double
+    h = (fmod((g-b)/C, 6.0)) * 60;
   }else if (g==M) { // g is max
     h = (((b-r)/C) + 2) * 60;
   }else if (b==M) { // b is max

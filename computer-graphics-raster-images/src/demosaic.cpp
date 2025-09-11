@@ -17,13 +17,13 @@ void demosaic(
       if ((i%2 == 0 && j%2 == 0) || (i%2 == 1 && j%2 == 1)) {// this means green
           if (i%2 == 0) {// on GBGBGB row
             //for blue avg
-            if (j == 0) {// if on first row
+            if (j == 0) {// if on first col
               rgb[(i * width + j)*3 + 2] = bayer[(i * width + j) + 1];
             }else {
               rgb[(i * width + j)*3 + 2] = (bayer[(i * width + j) + 1] + bayer[(i * width + j) - 1])/2;
             }
             //for red avg
-            if (i == 0) {// if on first col
+            if (i == 0) {// if on first row
               rgb[(i * width + j)*3] = bayer[((i+1) * width + j)];
             }else {
               rgb[(i * width + j)*3] = (bayer[((i+1) * width + j)] + bayer[((i-1) * width + j)])/2;
@@ -31,16 +31,16 @@ void demosaic(
 
           }else if (i%2 == 1) {// on RGRGRG row
             //for blue avg
-            if (j == width -1) {// if on last col
-              rgb[(i * width + j)*3 + 2] = bayer[(i * width + j) - 1];
+            if (i == height -1) {// if on last col
+              rgb[(i * width + j)*3 + 2] = bayer[((i-1) * width + j)];
             }else {
-              rgb[(i * width + j)*3 + 2] = (bayer[(i * width + j) + 1] + bayer[(i * width + j) - 1])/2;
+              rgb[(i * width + j)*3 + 2] = (bayer[((i-1) * width + j)] + bayer[((i+1) * width + j)])/2;
             }
             //for red avg
-            if (i == 0) {// if on last row
-              rgb[(i * width + j)*3] = bayer[((i-1) * width + j)];
+            if (j == width - 1) {// if on last col
+              rgb[(i * width + j)*3] = bayer[(i * width + j -1)];
             }else {
-              rgb[(i * width + j)*3] = (bayer[((i+1) * width + j)] + bayer[((i-1) * width + j)])/2;
+              rgb[(i * width + j)*3] = (bayer[(i * width + j -1)] + bayer[(i * width + j + 1)])/2;
             }
 
           }
