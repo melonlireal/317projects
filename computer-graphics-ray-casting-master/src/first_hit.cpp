@@ -11,15 +11,19 @@ bool first_hit(
   ////////////////////////////////////////////////////////////////////////////
   // Replace with your code here:
   double curr_min = -1.0;
+  Eigen::Vector3d & curr_eigen = n;
   for (int i = 0; i < objects.size(); i++) {
     if (objects[i]->intersect(ray, min_t, t, n)) {
       if (curr_min == -1.0 or curr_min < t) {
         curr_min = t;
+        curr_eigen = n;
         hit_id = i;
       }
     }
   }
   if (curr_min != -1.0) {
+    t = curr_min;
+    n = curr_eigen;
     return true;
   }
   return false;
