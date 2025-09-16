@@ -20,13 +20,13 @@ void rgb_to_hsv(
   if (C==0) {
     h = 0;
   }else if (r==M) { // r is max
-    h = (fmod((g-b)/C, 6.0)) * 60;
+    h = (fmod((g-b)/C + 6, 6.0)) * 60;
   }else if (g==M) { // g is max
     h = (((b-r)/C) + 2) * 60;
   }else if (b==M) { // b is max
     h = (((r-g)/C) + 4) * 60;
   }
-  if (M == 0) {
+  if (M == 0 || C == 0) {
     s = 0;
   } else {
     s = C/M;

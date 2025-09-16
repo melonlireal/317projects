@@ -10,6 +10,18 @@ bool first_hit(
 {
   ////////////////////////////////////////////////////////////////////////////
   // Replace with your code here:
+  double curr_min = -1.0;
+  for (int i = 0; i < objects.size(); i++) {
+    if (objects[i]->intersect(ray, min_t, t, n)) {
+      if (curr_min == -1.0 or curr_min < t) {
+        curr_min = t;
+        hit_id = i;
+      }
+    }
+  }
+  if (curr_min != -1.0) {
+    return true;
+  }
   return false;
   ////////////////////////////////////////////////////////////////////////////
 }
