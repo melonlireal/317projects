@@ -14,7 +14,7 @@ class Plane : public Object
   // Intersect plane with ray.
   //
   // Inputs:
-  //   Ray  ray to intersect with
+  //   Ray ray to intersect with
   //   min_t  minimum parametric distance to consider
   // Outputs:
   //   t  first intersection at ray.origin + t * ray.direction

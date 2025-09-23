@@ -33,7 +33,7 @@ int main(int argc, char * argv[])
   Camera camera;
   std::vector< std::shared_ptr<Object> > objects;
   // Read a camera and scene description from given .json file
-  read_json(argc<=1?"../data/sphere-and-plane.json":argv[1],camera,objects);
+  read_json(argc<=1?"../data/bunny.json":argv[1],camera,objects);
 
   int width = 640;
   int height = 360;
@@ -73,6 +73,7 @@ int main(int argc, char * argv[])
         // depth image
         const double zNear = camera.d;
         double linearized_depth = zNear/(t*ray.direction.norm());
+        //std::cout << "liearized_depth " << linearized_depth  << std::endl;
         linearized_depth = linearized_depth<1?linearized_depth:1;
         depth_image[j+width*i] = 255.0*(linearized_depth);
 
