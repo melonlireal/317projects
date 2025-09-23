@@ -13,7 +13,7 @@ bool raycolor(
 {
   ////////////////////////////////////////////////////////////////////////////
   // Replace with your code here:
-  if (num_recursive_calls == 10) {
+  if (num_recursive_calls == 5) {
     return true;
   }
   int hit_id;
