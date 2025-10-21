@@ -13,8 +13,8 @@ bool raycolor(
 {
   ////////////////////////////////////////////////////////////////////////////
   // Replace with your code here:
-  if (num_recursive_calls >= 5) {
-    return false;
+  if (num_recursive_calls == 5) {
+    return true;
   }
   rgb = Eigen::Vector3d(0, 0, 0);
   int hit_id;
