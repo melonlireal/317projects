@@ -1,6 +1,8 @@
 #include "TriangleSoup.h"
-#include "Triangle.h"
+#include "Ray.h"
+// Hint
 #include "first_hit.h"
+
 bool TriangleSoup::intersect(
   const Ray & ray, const double min_t, double & t, Eigen::Vector3d & n) const
 {
@@ -10,3 +12,6 @@ bool TriangleSoup::intersect(
   return first_hit(ray, min_t,triangles,hit,t, n);
   ////////////////////////////////////////////////////////////////////////////
 }
+
+
+

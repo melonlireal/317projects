@@ -1,12 +1,12 @@
 #include "Triangle.h"
 #include "Ray.h"
-#include <Eigen/Geometry>
 #include <Eigen/Dense>
-#include <iostream>
 
 bool Triangle::intersect(
   const Ray & ray, const double min_t, double & t, Eigen::Vector3d & n) const
 {
+  ////////////////////////////////////////////////////////////////////////////
+  // Replace with your code here:
   ////////////////////////////////////////////////////////////////////////////
   Eigen::Vector3d V1 = std::get<0>(corners);
   Eigen::Vector3d V2 = std::get<1>(corners);
@@ -28,7 +28,7 @@ bool Triangle::intersect(
     return true;
   }
 
-  return false;
+    return false;
   ////////////////////////////////////////////////////////////////////////////
 }
 
